@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 public class ProductManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class ProductManager : MonoBehaviour
     [SerializeField] private ProductDataLoader productDataLoader;
 
     public List<ProductData> allProducts = new List<ProductData>();
+    public event Action ProductsLoaded;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,6 +20,7 @@ public class ProductManager : MonoBehaviour
     {
         allProducts = catalog.products;
         Debug.Log("[MANAGER] Products loaded successfully. Total products: " + allProducts.Count);
+        ProductsLoaded?.Invoke();
     }
 
 }
