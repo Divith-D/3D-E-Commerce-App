@@ -1,0 +1,31 @@
+{
+  "products": [
+    {
+      "productId": "watch_001",
+      "productName": "Classic Watch",
+      "productDescription": "Analogue watch",
+      "category": "Watches",
+      "subcategory": "Male",
+      "ThumbnailUrl": "https://...",
+      "modelCategory": "Watch"
+    },
+    {
+      "productId": "shirt_001",
+      "productName": "Blue Shirt",
+      "productDescription": "Casual shirt",
+      "category": "Clothes",
+      "subcategory": "Male",
+      "ThumbnailUrl": "https://...",
+      "modelCategory": "Clothes"
+    },
+    {
+        "productId": "shoe_001",
+        "productName": "Running Shoes",
+        "productDescription": "Comfortable running shoes",
+        "category": "Shoes",
+        "subcategory": "Male",
+        "ThumbnailUrl": "https://...",
+        "modelCategory": "Shoes"
+    }
+  ]
+}
