@@ -130,11 +130,6 @@ MonoBehaviour:
   productNameText: {fileID: 54830889562514104}
   productMetaText: {fileID: 5613167223134841062}
   thumbnailRenderer: {fileID: 600788573692615606}
-  productName: 
-  productDescription: 
-  category: 
-  subcategory: 
-  ThumbnailUrl: 
 --- !u!1 &3911017280895678077
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,12 +294,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.9
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0
-  m_fontSizeMax: 72
+  m_fontSizeMin: 20
+  m_fontSizeMax: 35
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -318,7 +313,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 2
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
