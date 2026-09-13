@@ -7,20 +7,31 @@ public class ProductCardView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI productNameText;
     [SerializeField] private TextMeshProUGUI productMetaText;
     [SerializeField] private RawImage thumbnailRenderer;
+    [SerializeField] private Button cardButton;
 
+    private ProductData currentProduct;
+    private ProductDetailController detailController;
     private string currentThumbnailUrl;
+
+
+    private void Awake()
+    {
+        cardButton.onClick.AddListener(OnCardClicked);
+    }
 
 
     public void SetData(
         ProductData data,
-        ThumbnailCacheService thumbnailCacheService)
+        ThumbnailCacheService thumbnailCacheService,
+        ProductDetailController productDetailController)
     {
+        currentProduct = data;
+        detailController = productDetailController;
+
         productNameText.text = data.productName;
         productMetaText.text =
             data.category + " • " + data.subcategory;
 
-        // A recycled card must never show the previous product's image
-        // while the next thumbnail is loading.
         thumbnailRenderer.texture = null;
 
         currentThumbnailUrl = data.ThumbnailUrl;
@@ -35,8 +46,6 @@ public class ProductCardView : MonoBehaviour
                 requestedUrl,
                 texture =>
                 {
-                    // The same card may have been recycled for another
-                    // product while this request was still in progress.
                     if (currentThumbnailUrl != requestedUrl)
                         return;
 
@@ -48,13 +57,23 @@ public class ProductCardView : MonoBehaviour
     }
 
 
+    private void OnCardClicked()
+    {
+        if (currentProduct == null ||
+            detailController == null)
+            return;
+
+        detailController.OpenPanel(currentProduct);
+    }
+
+
     public void ClearView()
     {
-        // Invalidates any thumbnail callback still in flight.
+        currentProduct = null;
         currentThumbnailUrl = null;
 
-        productNameText.text = string.Empty;
-        productMetaText.text = string.Empty;
+        productNameText.text = "";
+        productMetaText.text = "";
         thumbnailRenderer.texture = null;
     }
 }

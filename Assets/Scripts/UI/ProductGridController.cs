@@ -10,6 +10,8 @@ public class ProductGridController : MonoBehaviour
 
     [Header("Grid")]
     [SerializeField] private ProductCardView productCardPrefab;
+    [SerializeField]
+    private ProductDetailController productDetailController;
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private RectTransform content;
     [SerializeField] private RectTransform viewport;
@@ -375,7 +377,8 @@ public class ProductGridController : MonoBehaviour
 
             card.SetData(
                 productManager.CurrentProducts[productIndex],
-                thumbnailCacheService
+                thumbnailCacheService,
+                productDetailController
             );
         }
     }
