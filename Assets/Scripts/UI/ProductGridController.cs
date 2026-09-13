@@ -58,13 +58,23 @@ public class ProductGridController : MonoBehaviour
 
     private void Start()
     {
-        InitializeVirtualGrid();
+        {
+            InitializeVirtualGrid();
 
-        // Handles the case where products were already loaded.
-        if (productManager.CurrentProducts.Count > 0)
+            if (!initialized)
+                return;
+
+            int count = productManager != null
+                ? productManager.CurrentProducts.Count
+                : -1;
+
+            Debug.Log(
+                "[GRID] Start. CurrentProducts count = " + count
+            );
+
             RefreshProducts();
-        else
-            UpdateVirtualContentHeight();
+
+        }
     }
 
 

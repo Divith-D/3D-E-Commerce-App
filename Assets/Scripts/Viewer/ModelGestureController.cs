@@ -37,6 +37,8 @@ public class ModelGestureController : MonoBehaviour
     private float lastMouseClickTime;
 
     private Coroutine resetCoroutine;
+    [SerializeField]
+    private float mouseScrollScaleSensitivity = 0.1f;
 
 
     public void SetTarget(Transform newTarget)
@@ -113,6 +115,26 @@ public class ModelGestureController : MonoBehaviour
 
             previousMousePosition =
                 currentMousePosition;
+        }
+
+        float scroll = Input.mouseScrollDelta.y;
+
+        if (Mathf.Abs(scroll) > 0.01f)
+        {
+            CancelReset();
+
+            currentScaleMultiplier +=
+                scroll * mouseScrollScaleSensitivity;
+
+            currentScaleMultiplier =
+                Mathf.Clamp(
+                    currentScaleMultiplier,
+                    minScaleMultiplier,
+                    maxScaleMultiplier
+                );
+
+            target.localScale =
+                defaultScale * currentScaleMultiplier;
         }
     }
 

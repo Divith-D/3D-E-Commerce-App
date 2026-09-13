@@ -1,41 +1,76 @@
-using UnityEngine;
-using System.Collections;
 using System;
+using System.Collections;
+using System.IO;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class ProductDataLoader : MonoBehaviour
 {
+    [SerializeField]
+    private string jsonFileName = "products.json";
 
-    public IEnumerator LoadProducts(Action<ProductCatalogJson> OnLoaded)
+    public IEnumerator LoadProducts(
+        Action<ProductCatalogJson> onLoaded)
     {
-        string path = Application.streamingAssetsPath + "/products.json";
+        string path = Path.Combine(
+            Application.streamingAssetsPath,
+            jsonFileName
+        );
 
-#if UNITY_EDITOR && Unity_Android
-        string uri = path;
+#if UNITY_ANDROID && !UNITY_EDITOR
+        string url = path;
 #else
-         string uri = "file://" + path;
+        string url = new Uri(path).AbsoluteUri;
 #endif
 
-        UnityWebRequest request = UnityWebRequest.Get(uri);
+        Debug.Log(
+            "[DATA] Loading products from: " + url
+        );
+
+        using UnityWebRequest request =
+            UnityWebRequest.Get(url);
+
         yield return request.SendWebRequest();
 
-        if (request.result != UnityWebRequest.Result.Success)
+        if (request.result !=
+            UnityWebRequest.Result.Success)
         {
-            print("Product JSON Load Error: " + request.error);
+            Debug.LogError(
+                "[DATA] Failed to load products: "
+                + request.error
+            );
+
             yield break;
         }
 
-        string jsontext = request.downloadHandler.text;
+        string json =
+            request.downloadHandler.text;
 
-        ProductCatalogJson catalog = JsonUtility.FromJson<ProductCatalogJson>(jsontext);
+        Debug.Log(
+            "[DATA] JSON downloaded. Characters: "
+            + json.Length
+        );
 
-        if (catalog == null || catalog.products == null)
+        ProductCatalogJson catalog =
+            JsonUtility.FromJson<ProductCatalogJson>(
+                json
+            );
+
+        if (catalog == null ||
+            catalog.products == null)
         {
-            print("Product JSON Load Error: Invalid JSON format.");
+            Debug.LogError(
+                "[DATA] JSON parsed but product catalogue is invalid."
+            );
+
             yield break;
         }
 
-        Debug.Log("Product JSON Loaded Successfully. Total Products: " + catalog.products.Count);
-        OnLoaded?.Invoke(catalog);
+        Debug.Log(
+            "[DATA] Parsed products: "
+            + catalog.products.Count
+        );
+
+        onLoaded?.Invoke(catalog);
     }
 }
