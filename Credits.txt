@@ -1,0 +1,42 @@
+THIRD-PARTY ASSET CREDITS
+
+3D MODELS
+
+1. Voronoi Pattern Necklace 3D Model
+   Author: Ahmad Riazi
+   Source: Sketchfab
+   License: Creative Commons Attribution (CC BY)
+   URL:
+   https://sketchfab.com/3d-models/voronoi-pattern-necklace-3d-model-6915c9f601e244f28d6197137e6fa816
+
+2. Maniqui zarah man
+   Author: Roberto Domínguez
+   Source: Sketchfab
+   License: Creative Commons Attribution (CC BY 4.0)
+   URL:
+   https://sketchfab.com/3d-models/maniqui-zarah-man-1008c4b1362d44149eae9619fd9a69d4
+
+3. Wrist Watch – Game-Ready 3D Model
+   Author: GAMICO
+   Source: Sketchfab
+   License: Creative Commons Attribution (CC BY)
+   URL:
+   https://sketchfab.com/3d-models/wrist-watch-game-ready-3d-model-956db3debbd441e7b42ed4c2e83de591
+
+
+RUNTIME ASSET HOSTING
+
+Netlify
+URL:
+https://kixr-ecom.netlify.app
+
+Purpose:
+Static hosting for product thumbnail images loaded at runtime by the Unity application using UnityWebRequest.
+
+
+NOTES
+
+Product catalogue data is bundled locally in:
+Assets/StreamingAssets/products.json
+
+Third-party 3D models are used only as representative models for product categories within the 3D viewer.
