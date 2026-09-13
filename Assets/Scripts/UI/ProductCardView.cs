@@ -1,14 +1,16 @@
+using TMPro;
 using UnityEngine;
-using TMPro ;
+using UnityEngine.UI;
 
 public class ProductCardView : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI productNameText;
     //[SerializeField] private TextMeshProUGUI productDescriptionText;
-    //[SerializeField] private TextMeshProUGUI categoryText;
-    //[SerializeField] private TextMeshProUGUI subcategoryText;
     [SerializeField] private TextMeshProUGUI productMetaText;
+    [SerializeField] private RawImage thumbnailRenderer;
+
+    private string currentThumbnailUrl;
 
     [SerializeField] private string productName;
     [SerializeField] private string productDescription;
@@ -16,18 +18,29 @@ public class ProductCardView : MonoBehaviour
     [SerializeField] private string subcategory;
     [SerializeField] private string ThumbnailUrl;
 
-    public void SetData(ProductData Data)
+    public void SetData(ProductData Data, ThumbnailCacheService thumbnailCacheService)
     {
-        productName = Data.productName;
-        productDescription = Data.productDescription;
-        category = Data.category;
-        subcategory = Data.subcategory;
-        ThumbnailUrl = Data.ThumbnailUrl;
+        productNameText.text = Data.productName;
+        productMetaText.text = Data.category + " • " + Data.subcategory;
+        currentThumbnailUrl = Data.ThumbnailUrl;
 
-        if (productNameText != null)
+        if (string.IsNullOrEmpty(currentThumbnailUrl))
         {
-            productNameText.text = productName;
-            productMetaText.text = category + " • " + subcategory;
+            return;
         }
+
+        string requestedUrl = currentThumbnailUrl;
+
+                StartCoroutine(thumbnailCacheService.GetThumbnail(requestedUrl, texture =>
+                {
+                    if (currentThumbnailUrl != requestedUrl) return;
+
+                    if (texture != null)
+                    {
+                        thumbnailRenderer.texture = texture;
+                    }
+                }
+            )
+        );
     }
 }

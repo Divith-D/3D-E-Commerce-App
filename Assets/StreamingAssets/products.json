@@ -2,30 +2,183 @@
   "products": [
     {
       "productId": "watch_001",
-      "productName": "Classic Watch",
-      "productDescription": "Analogue watch",
+      "productName": "Classic Men's Watch",
+      "productDescription": "Elegant analogue wristwatch for everyday and formal wear.",
       "category": "Watches",
       "subcategory": "Male",
-      "ThumbnailUrl": "https://...",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/wacth.png",
       "modelCategory": "Watch"
     },
     {
-      "productId": "shirt_001",
-      "productName": "Blue Shirt",
-      "productDescription": "Casual shirt",
+      "productId": "watch_002",
+      "productName": "Classic Women's Watch",
+      "productDescription": "Polished analogue wristwatch with an elegant jewellery-inspired finish.",
+      "category": "Watches",
+      "subcategory": "Female",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/wacth.png",
+      "modelCategory": "Watch"
+    },
+    {
+      "productId": "watch_003",
+      "productName": "Junior Boys Watch",
+      "productDescription": "Easy-to-read analogue watch for boys.",
+      "category": "Watches",
+      "subcategory": "Kids-Boy",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/wacth.png",
+      "modelCategory": "Watch"
+    },
+    {
+      "productId": "watch_004",
+      "productName": "Junior Girls Watch",
+      "productDescription": "Stylish analogue watch for girls.",
+      "category": "Watches",
+      "subcategory": "Kids-Girl",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/wacth.png",
+      "modelCategory": "Watch"
+    },
+    {
+      "productId": "clothes_male_001",
+      "productName": "Men's Essential Outfit",
+      "productDescription": "Relaxed T-shirt and denim combination for casual wear.",
       "category": "Clothes",
       "subcategory": "Male",
-      "ThumbnailUrl": "https://...",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/Men_Cloths.png",
       "modelCategory": "Clothes"
     },
     {
-        "productId": "shoe_001",
-        "productName": "Running Shoes",
-        "productDescription": "Comfortable running shoes",
-        "category": "Shoes",
-        "subcategory": "Male",
-        "ThumbnailUrl": "https://...",
-        "modelCategory": "Shoes"
+      "productId": "clothes_male_002",
+      "productName": "Men's Premium Casual Outfit",
+      "productDescription": "Premium long-sleeve top paired with classic blue jeans.",
+      "category": "Clothes",
+      "subcategory": "Male",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/man.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_male_003",
+      "productName": "Men's Everyday Style",
+      "productDescription": "Versatile casual clothing designed for daily comfort.",
+      "category": "Clothes",
+      "subcategory": "Male",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/Men_Cloths.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_female_001",
+      "productName": "Women's Black Mini Dress",
+      "productDescription": "Elegant fitted dress with a clean contemporary silhouette.",
+      "category": "Clothes",
+      "subcategory": "Female",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/woman_clothes.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_female_002",
+      "productName": "Women's Smart-Casual Outfit",
+      "productDescription": "Modern fitted top with tailored white trousers.",
+      "category": "Clothes",
+      "subcategory": "Female",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/woman.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_female_003",
+      "productName": "Peach Designer Saree",
+      "productDescription": "Peach saree with gold motifs and a contrasting border.",
+      "category": "Clothes",
+      "subcategory": "Female",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/saree.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_female_004",
+      "productName": "Women's Evening Dress",
+      "productDescription": "Refined black dress suitable for evening occasions.",
+      "category": "Clothes",
+      "subcategory": "Female",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/woman_clothes.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_boy_001",
+      "productName": "Boys Formal Suit",
+      "productDescription": "Tailored black formal suit designed for boys.",
+      "category": "Clothes",
+      "subcategory": "Kids-Boy",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/Boy_clothes.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_boy_002",
+      "productName": "Boys Summer Outfit",
+      "productDescription": "Lightweight printed shirt and trousers for boys.",
+      "category": "Clothes",
+      "subcategory": "Kids-Boy",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/boy.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_boy_003",
+      "productName": "Boys Occasion Wear",
+      "productDescription": "Smart coordinated outfit for celebrations and formal events.",
+      "category": "Clothes",
+      "subcategory": "Kids-Boy",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/Boy_clothes.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_girl_001",
+      "productName": "Girls Designer Outfit",
+      "productDescription": "Premium coordinated outfit with a pleated skirt for girls.",
+      "category": "Clothes",
+      "subcategory": "Kids-Girl",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/Girl.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "clothes_girl_002",
+      "productName": "Girls Occasion Outfit",
+      "productDescription": "Elegant coordinated clothing for parties and special occasions.",
+      "category": "Clothes",
+      "subcategory": "Kids-Girl",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/Girl.png",
+      "modelCategory": "Clothes"
+    },
+    {
+      "productId": "jewellery_001",
+      "productName": "Women's Gold Chain Necklace",
+      "productDescription": "Minimal gold chain necklace for elegant everyday styling.",
+      "category": "Jewellery",
+      "subcategory": "Female",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/jewelry.png",
+      "modelCategory": "Jewellery"
+    },
+    {
+      "productId": "jewellery_002",
+      "productName": "Men's Fine Gold Chain",
+      "productDescription": "A refined gold chain suited to understated men's styling.",
+      "category": "Jewellery",
+      "subcategory": "Male",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/jewelry.png",
+      "modelCategory": "Jewellery"
+    },
+    {
+      "productId": "jewellery_003",
+      "productName": "Boys Celebration Chain",
+      "productDescription": "A lightweight decorative chain for special occasions.",
+      "category": "Jewellery",
+      "subcategory": "Kids-Boy",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/jewelry.png",
+      "modelCategory": "Jewellery"
+    },
+    {
+      "productId": "jewellery_004",
+      "productName": "Girls Celebration Necklace",
+      "productDescription": "A delicate necklace for celebrations and festive outfits.",
+      "category": "Jewellery",
+      "subcategory": "Kids-Girl",
+      "ThumbnailUrl": "https://kixr-ecom.netlify.app/jewelry.png",
+      "modelCategory": "Jewellery"
     }
   ]
 }

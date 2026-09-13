@@ -5,6 +5,7 @@ public class ProductGridController : MonoBehaviour
     [SerializeField] private ProductCardView productCardPrefab;
     [SerializeField] private ProductManager productManager;
     [SerializeField] private Transform SpawnParent;
+    [SerializeField] ThumbnailCacheService thumbnailCacheService;
 
     void OnEnable()
     {
@@ -21,7 +22,7 @@ public class ProductGridController : MonoBehaviour
         foreach(ProductData product in productManager.allProducts)
         {
             ProductCardView card= Instantiate(productCardPrefab, SpawnParent);
-            card.SetData(product);
+            card.SetData(product, thumbnailCacheService);
         }
     }
 }

@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProductCardView
   productNameText: {fileID: 54830889562514104}
   productMetaText: {fileID: 5613167223134841062}
+  thumbnailRenderer: {fileID: 600788573692615606}
   productName: 
   productDescription: 
   category: 
@@ -144,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4406977541443563802}
   - component: {fileID: 671287543300484031}
-  - component: {fileID: 3464531893804457119}
+  - component: {fileID: 600788573692615606}
   m_Layer: 5
   m_Name: Thumbnail
   m_TagString: Untagged
@@ -179,7 +180,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3911017280895678077}
   m_CullTransparentMesh: 1
---- !u!114 &3464531893804457119
+--- !u!114 &600788573692615606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,9 +189,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3911017280895678077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -199,16 +200,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b97eb9ddf975a14788436eff6f9ba28, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 5
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &4991363715158713822
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +299,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.95
+  m_fontSize: 41.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -543,23 +541,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58619402c38b86941b9f58077a30790b, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: fd1a87b0e3986e2499f3ac297f5e6757, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 5
+  m_PixelsPerUnitMultiplier: 67.82
 --- !u!114 &7845661606778213835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,4 +570,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
-  m_ShowMaskGraphic: 1
+  m_ShowMaskGraphic: 0
