@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ProductDetailController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ProductDetailController : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button closeButton;
     [SerializeField] private Button viewIn3DButton;
+    [SerializeField] private string viewerSceneName = "ProductViewerScene";
 
     [Header("Services")]
     [SerializeField] private ThumbnailCacheService thumbnailCacheService;
@@ -115,16 +117,11 @@ public class ProductDetailController : MonoBehaviour
         if (currentProduct == null)
             return;
 
-        Debug.Log(
-            "[DETAIL] View in 3D requested: "
-            + currentProduct.productName
-            + " | Model Category: "
-            + currentProduct.modelCategory
-        );
+        ProductSelectionContext.Select(currentProduct);
 
-        // NEXT:
-        // Pass currentProduct/modelCategory
-        // into the 3D viewer.
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            "ProductViewerScene"
+        );
     }
 
 
