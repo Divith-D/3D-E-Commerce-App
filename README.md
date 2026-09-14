@@ -1,4 +1,4 @@
-# KiXR Unity Developer Assignment
+# Unity Developer Assignment
 ## 3D E-Commerce Product Filter & Preview System
 
 **Developer:** Divith M J  
