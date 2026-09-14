@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class ProductManager : MonoBehaviour
 {
@@ -17,12 +18,20 @@ public class ProductManager : MonoBehaviour
         = new FilterState();
 
     public event Action ProductsChanged;
+    [SerializeField]
+    private ThumbnailCacheService thumbnailCacheService;
 
 
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     private void Start()
     {
         StartCoroutine(
-            productDataLoader.LoadProducts(OnProductsLoaded)
+            productDataLoader.LoadProducts(
+                OnProductsLoaded
+            )
         );
     }
 
@@ -31,17 +40,36 @@ public class ProductManager : MonoBehaviour
     {
         allProducts = catalog.products;
 
+        Debug.Log(
+            "[MANAGER] Products loaded: " +
+            allProducts.Count
+        );
+
+        StartCoroutine(
+            PrepareInitialCatalogue()
+        );
+    }
+    private IEnumerator PrepareInitialCatalogue()
+    {
+        // Preload thumbnails BEFORE catalogue cards appear.
+        if (thumbnailCacheService != null)
+        {
+            yield return thumbnailCacheService.PrewarmProducts(
+                allProducts,
+                12
+            );
+        }
+
+        // Only expose products after preload is finished.
         currentProducts =
             new List<ProductData>(allProducts);
 
         Debug.Log(
-            "[MANAGER] Products loaded: "
-            + allProducts.Count
+            "[MANAGER] Thumbnail prewarm finished."
         );
 
         ProductsChanged?.Invoke();
     }
-
 
     public void ApplyFilter(FilterState filter)
     {

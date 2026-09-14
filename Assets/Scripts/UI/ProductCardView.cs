@@ -41,19 +41,21 @@ public class ProductCardView : MonoBehaviour
 
         string requestedUrl = currentThumbnailUrl;
 
-        StartCoroutine(
-            thumbnailCacheService.GetThumbnail(
-                requestedUrl,
-                texture =>
-                {
-                    if (currentThumbnailUrl != requestedUrl)
-                        return;
+        thumbnailCacheService.RequestThumbnail(
+    requestedUrl,
+    texture =>
+    {
+        // Card may have been recycled for another product.
+        if (currentThumbnailUrl != requestedUrl)
+            return;
 
-                    if (texture != null)
-                        thumbnailRenderer.texture = texture;
-                }
-            )
-        );
+        if (texture != null)
+        {
+            thumbnailRenderer.texture =
+                texture;
+        }
+    }
+);
     }
 
 

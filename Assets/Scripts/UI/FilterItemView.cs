@@ -82,19 +82,26 @@ public class FilterItemView : MonoBehaviour
         if (!string.IsNullOrEmpty(
                 product.ThumbnailUrl))
         {
-            StartCoroutine(
-                thumbnailCache.GetThumbnail(
-                    product.ThumbnailUrl,
-                    texture =>
-                    {
-                        if (texture != null)
-                        {
-                            thumbnail.texture =
-                                texture;
-                        }
-                    }
-                )
-            );
+           string requestedUrl =
+    product.ThumbnailUrl;
+
+thumbnailCache.RequestThumbnail(
+    requestedUrl,
+    texture =>
+    {
+        // This filter row may already have
+        // been destroyed during a refresh.
+        if (this == null)
+            return;
+
+        if (texture != null &&
+            thumbnail != null)
+        {
+            thumbnail.texture =
+                texture;
+        }
+    }
+);
         }
     }
 

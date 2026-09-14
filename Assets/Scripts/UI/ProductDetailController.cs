@@ -64,23 +64,20 @@ public class ProductDetailController : MonoBehaviour
             string requestedUrl =
                 currentThumbnailUrl;
 
-            StartCoroutine(
-                thumbnailCacheService.GetThumbnail(
-                    requestedUrl,
-                    texture =>
-                    {
-                        // Prevent an old request from updating
-                        // the panel after another product was opened.
-                        if (currentThumbnailUrl != requestedUrl)
-                            return;
+            thumbnailCacheService.RequestThumbnail(
+    requestedUrl,
+    texture =>
+    {
+        if (currentThumbnailUrl != requestedUrl)
+            return;
 
-                        if (texture != null)
-                        {
-                            productImage.texture = texture;
-                        }
-                    }
-                )
-            );
+        if (texture != null)
+        {
+            productImage.texture =
+                texture;
+        }
+    }
+);
         }
     }
 

@@ -5343,6 +5343,7 @@ GameObject:
   - component: {fileID: 902650905}
   - component: {fileID: 902650904}
   - component: {fileID: 902650903}
+  - component: {fileID: 902650906}
   m_Layer: 5
   m_Name: Quick Filter Bar
   m_TagString: Untagged
@@ -5437,6 +5438,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902650901}
   m_CullTransparentMesh: 1
+--- !u!114 &902650906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902650901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33862bb8fab89374789ab225b9b97c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuickFilterBarController
+  productManager: {fileID: 1366377864}
+  watchesButton: {fileID: 326842427}
+  clothesButton: {fileID: 267313756}
+  jewelleryButton: {fileID: 112179109}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  selectedColor: {r: 0.78039217, g: 0.5176471, b: 0.36862746, a: 1}
 --- !u!1001 &958645722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7063,6 +7082,9 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   fadeDuration: 0.18
+  itemFadeDuration: 0.16
+  itemStagger: 0.035
+  itemStartScale: 0.97
 --- !u!4 &1310772034
 Transform:
   m_ObjectHideFlags: 0
@@ -7378,6 +7400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProductManager
   productDataLoader: {fileID: 816245471}
   allProducts: []
+  thumbnailCacheService: {fileID: 0}
 --- !u!4 &1366377865
 Transform:
   m_ObjectHideFlags: 0

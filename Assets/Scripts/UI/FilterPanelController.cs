@@ -96,6 +96,10 @@ public class FilterPanelController : MonoBehaviour
         new Dictionary<CanvasGroup, Coroutine>();
 
 
+    [Header("Filter Item Animation")]
+[SerializeField] private float itemFadeDuration = 0.16f;
+[SerializeField] private float itemStagger = 0.035f;
+[SerializeField] private float itemStartScale = 0.97f;
     // =========================================================
     // START
     // =========================================================
@@ -682,60 +686,47 @@ public class FilterPanelController : MonoBehaviour
         return;
 
 
-    // =====================================
-    // SAFELY REMOVE OLD ROWS
-    // =====================================
+    // -----------------------------------------
+    // REMOVE OLD RESULTS IMMEDIATELY
+    // -----------------------------------------
 
     for (
-        int i =
-            filterItemParent.childCount - 1;
+        int i = filterItemParent.childCount - 1;
         i >= 0;
         i--)
     {
-        Transform child =
-            filterItemParent.GetChild(i);
+        GameObject oldItem =
+            filterItemParent
+                .GetChild(i)
+                .gameObject;
 
+        // Hide immediately.
+        // Destroy happens at end of frame.
+        oldItem.SetActive(false);
 
-        FilterItemView oldItem =
-            child.GetComponent<
-                FilterItemView>();
-
-
-        // IMPORTANT:
-        // stop old toggle callbacks
-        // BEFORE Destroy()
-        if (oldItem != null)
-        {
-            oldItem.Detach();
-        }
-
-
-        Destroy(
-            child.gameObject
-        );
+        Destroy(oldItem);
     }
 
 
-    // =====================================
-    // DON'T SHOW ITEMS YET
-    // =====================================
+    // -----------------------------------------
+    // NOTHING TO SHOW YET
+    // -----------------------------------------
 
     if (
         draftFilter == null ||
-        draftFilter
-            .selectedCategories
-            .Count == 0 ||
-        draftFilter
-            .selectedSubcategories
-            .Count == 0)
+        draftFilter.selectedCategories.Count == 0 ||
+        draftFilter.selectedSubcategories.Count == 0)
     {
         return;
     }
 
 
-    // =====================================
-    // BUILD CURRENT VISIBLE LIST
-    // =====================================
+    int visibleIndex = 0;
+
+
+    // -----------------------------------------
+    // CREATE FILTERED RESULTS
+    // -----------------------------------------
 
     foreach (
         ProductData product
@@ -757,16 +748,13 @@ public class FilterPanelController : MonoBehaviour
                 );
 
 
-        if (!categoryMatch ||
+        if (
+            !categoryMatch ||
             !subcategoryMatch)
         {
             continue;
         }
 
-
-        // =====================================
-        // THIS IS THE REMEMBERED STATE
-        // =====================================
 
         bool selected =
             draftFilter
@@ -789,7 +777,120 @@ public class FilterPanelController : MonoBehaviour
             selected,
             OnItemSelectionChanged
         );
+
+
+        // -----------------------------------------
+        // SMOOTH LOAD
+        // -----------------------------------------
+
+        StartCoroutine(
+            AnimateFilterItemIn(
+                item.transform,
+                visibleIndex
+            )
+        );
+
+
+        visibleIndex++;
     }
+}
+private IEnumerator AnimateFilterItemIn(
+    Transform itemTransform,
+    int index)
+{
+    if (itemTransform == null)
+        yield break;
+
+
+    CanvasGroup group =
+        itemTransform.GetComponent<CanvasGroup>();
+
+
+    if (group == null)
+    {
+        group =
+            itemTransform.gameObject
+                .AddComponent<CanvasGroup>();
+    }
+
+
+    Vector3 normalScale =
+        itemTransform.localScale;
+
+
+    Vector3 startScale =
+        normalScale * itemStartScale;
+
+
+    group.alpha = 0f;
+
+    itemTransform.localScale =
+        startScale;
+
+
+    // Don't keep increasing the delay forever
+    // if reviewer loads a huge JSON.
+    float delay =
+        Mathf.Min(index, 8) *
+        itemStagger;
+
+
+    if (delay > 0f)
+    {
+        yield return new WaitForSecondsRealtime(
+            delay
+        );
+    }
+
+
+    float elapsed = 0f;
+
+
+    while (elapsed < itemFadeDuration)
+    {
+        if (itemTransform == null)
+            yield break;
+
+
+        elapsed +=
+            Time.unscaledDeltaTime;
+
+
+        float t =
+            Mathf.Clamp01(
+                elapsed /
+                itemFadeDuration
+            );
+
+
+        float smoothT =
+            Mathf.SmoothStep(
+                0f,
+                1f,
+                t
+            );
+
+
+        group.alpha =
+            smoothT;
+
+
+        itemTransform.localScale =
+            Vector3.Lerp(
+                startScale,
+                normalScale,
+                smoothT
+            );
+
+
+        yield return null;
+    }
+
+
+    group.alpha = 1f;
+
+    itemTransform.localScale =
+        normalScale;
 }
 
 
